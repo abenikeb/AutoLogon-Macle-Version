@@ -1,0 +1,48 @@
+<!--index.maml-->
+<view class="container">
+    <view class="home">
+        <view class="profile">
+            <view ma:if="{{userData.nickName}}">{{"Welcome " + userData.nickName+"  "}}</view>
+            <view ma:if="{{userData.identifier}}">{{"PhoneNo" + userData.identifier+"  "}}</view>
+            <button ma:else bind:tap="applyH5Token" class="btn-c" loading="{{isLoading ? true : false}}" hover-stop-propagation='true'> Login With Telebirr_</button>
+            <button bind:tap="downloadFile">Play</button>
+
+            <!-- <button class="btn-area2" type="primary" loading="true" hover-stop-propagation='true'>
+                Main operations on the page Loading
+            </button> -->
+        </view>
+        <p>Amount</p>
+        <view class="amount">
+            <view bind:tap="waresSelect" data-itemid="{{item.id}}" ma:for="{{waresList}}" ma:key="id" class="{{item.className}}">
+                <view class="tips">
+                    <image ma:if="{{item.imageType == 1}}" src="../../res/images/diamonds_1.png" />
+                    <image ma:elif="{{item.imageType == 2}}" src="../../res/images/diamonds_2.png" />
+                    <image ma:elif="{{item.imageType == 3}}" src="../../res/images/diamonds_3.png" />
+                    <image ma:elif="{{item.imageType == 4}}" src="../../res/images/diamonds_4.png" />
+                    <image ma:elif="{{item.imageType == 5}}" src="../../res/images/diamonds_5.png" />
+                    <image ma:elif="{{item.imageType == 6}}" src="../../res/images/diamonds_6.png" />
+                    <image ma:elif="{{item.imageType == 7}}" src="../../res/images/diamonds_7.png" />
+                    <image ma:else="{{item.imageType == 8}}" src="../../res/images/diamonds_1.png" />
+                </view>
+                <view class="dscription">
+                    <view class="bg1">{{ item.title }}</view>
+                    <view class="bg2 fn2">{{ item.price }}{{ item.currency }}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="footer" id="foot">
+        <!-- <button bind:tap="applyH5Token" class="c">
+            Login With Telebirr Super App
+        </button> -->
+        <button bind:tap="buyGoods" class="c" ma:if="{{selectedWaresInfo !== undefined}}">
+            Recharge:{{ selectedWaresInfo.price }}{{ selectedWaresInfo.currency }}
+        </button>
+        <button class="b" ma:else type="button" id="buy">
+            Pay?
+        </button>
+        <view class="p">www.et.com</view>
+    </view>
+    <view>{{success}}</view>
+</view>
+
